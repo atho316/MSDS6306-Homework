@@ -1,6 +1,7 @@
 # MSDS6306-Homework
-# Contact Information:
+#### Contact Information:
   + Andy Ho
   + atho@smu.edu
 
-A Github repository for homeworks from MSDS6306 class.  
+This is a Github repository for my homework and solutions from MSDS6306 class.
+
