@@ -7,19 +7,19 @@ output: html_document
 
 #### 1. FiveThirtyEight Data set : College of All Ages
 * A. Install the fivethirtyeight package.
-```r{}
-install.packages("fivethirtyeight")
+```{r}
 library(fivethirtyeight)
 ```
 
 * B. Assign eighteenth data set to 'df'
-```r{}
+```{r}
 data("college_all_ages")
 df <- college_all_ages [18,]
+head(df)
 ```
 
 * C. Write out URL in a comment to the related news story
-```r{}
+```{r}
 vignette("fivethirtyeight", all = FALSE)
 ```
 #####Related News Story for college_all_ages data set
@@ -27,60 +27,32 @@ The raw data behind the story "The Economic Guide To Picking A College Major"</b
 URL: https://fivethirtyeight.com/features/the-economic-guide-to-picking-a-college-major/.
 
 * D. Dimensions and column names of this data frame.
-```r{}
+```{r}
 dim(college_all_ages)
- [1] 173  11
 names (college_all_ages)
- [1] "major_code"                  "major"                       "major_category"             
- [4] "total"                       "employed"                    "employed_fulltime_yearround"
- [7] "unemployed"                  "unemployment_rate"           "p25th"                      
-[10] "median"                      "p75th"  
 ```
 
 #### 2. Data Summary
 + A. R Code for column names of the data frame.
-```r{}
+```{r}
 colnames(college_all_ages)
- [1] "major_code"                  "major"                       "major_category"             
- [4] "total"                       "employed"                    "employed_fulltime_yearround"
- [7] "unemployed"                  "unemployment_rate"           "p25th"                      
-[10] "median"                      "p75th"     
-> ncol(college_all_ages)
-[1] 11
+ncol(college_all_ages)
 ```
 
 + B. A count of each unique major_category in df.
-```r{}
+```{r}
 x <- college_all_ages$major_category
 major_count <- aggregate(data.frame(count = x), list(major_category = x), length)
 major_count
-                    major_category         count
-1      Agriculture & Natural Resources    10
-2                                 Arts     8
-3               Biology & Life Science    14
-4                             Business    13
-5          Communications & Journalism     4
-6              Computers & Mathematics    11
-7                            Education    16
-8                          Engineering    29
-9                               Health    12
-10           Humanities & Liberal Arts    15
-11 Industrial Arts & Consumer Services     7
-12                   Interdisciplinary     1
-13                 Law & Public Policy     5
-14                   Physical Sciences    10
-15            Psychology & Social Work     9
-16                      Social Science     9
 ```
 
 + C. Barplot of major_count
-```r{}
+```{r}
 barplot(major_count$count, names = major_count$major_category, xlab = "Count", ylab = "Major", main = 'Major Count', col = 'blue', horiz = TRUE, las = 2)
 ```
-![](/Users/andyho/RStudio_workspace/MSDS6306/unit_4/Aho_livesession4assignment/barplot.png)
 
 + D. Output fivethirtyeight data to csv file.  <b>Refer to College_All_Ages.csv attachment.</b>
-```r{}
+```{r}
 write.csv(college_all_ages, file = "College_All_Ages.csv", row.names = FALSE)
 ```
 
